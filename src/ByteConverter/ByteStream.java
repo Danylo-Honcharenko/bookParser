@@ -1,7 +1,6 @@
 package ByteConverter;
 
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.util.*;
 
 public class ByteStream {
