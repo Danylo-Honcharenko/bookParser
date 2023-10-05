@@ -34,7 +34,7 @@ public class ByteStream {
                 }
                 intermediateByteStorage.put(letterNumber);
             } else {
-                // we set the position taking into account the rule
+                // saves the cursor position in the buffer taking into account the indentation
                 currentPointerPositionByteStorage = intermediateByteStorage.position() + 1;
                 // convert received bytes into words
                 byteMapping.toLetter(intermediateByteStorage, wordPicker, wordsStorage);
