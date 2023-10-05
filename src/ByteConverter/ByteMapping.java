@@ -1,5 +1,6 @@
 package ByteConverter;
 
+import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,10 @@ public class ByteMapping {
                 .filter(b -> b != 10)
                 .toList();
     }
-    public void toLetter(IntBuffer buffer, StringBuilder wordPicker, List<String> wordsStorage) {
+    public void toLetter(ByteBuffer buffer, StringBuilder wordPicker, List<String> wordsStorage) {
         for (; iterator < buffer.limit(); iterator++) {
             // get value from buffer
-            byte value = (byte) buffer.get(iterator);
+            byte value = buffer.get(iterator);
             // if the field is 0 then we got all the values
             if (value == 0) {
                 this.setCurrentIterationState(true);

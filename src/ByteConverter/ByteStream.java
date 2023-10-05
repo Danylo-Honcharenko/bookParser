@@ -1,5 +1,6 @@
 package ByteConverter;
 
+import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.*;
 
@@ -13,7 +14,7 @@ public class ByteStream {
         int currentSizeByteStorage = optimizedByteStorage.size();
         final int bufferSize = 128 * 1024;
         // Buffer initialization
-        IntBuffer intermediateByteStorage = IntBuffer.allocate(bufferSize);
+        ByteBuffer intermediateByteStorage = ByteBuffer.allocate(bufferSize);
         // After a word is assembled, it is cleared to store the next word
         StringBuilder wordPicker = new StringBuilder();
         int currentPointerPositionByteStorage = 0;
