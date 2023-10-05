@@ -58,7 +58,7 @@ public class Main {
                         try {
                             statisticFile.write("Word: " + m.getKey() + " " + " Amount: " + m.getValue() + "\n");
                         } catch (IOException e) {
-                            throw new RuntimeException(e);
+                           System.err.format("File write error: %s", e);
                         }
                     });
             statisticFile.write("\nUnique words:\n");
