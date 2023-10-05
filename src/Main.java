@@ -1,15 +1,12 @@
 import ByteConverter.ByteStream;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the name of the book on which you want to analyze the operation");
         System.out.print("Book title: ");
@@ -26,7 +23,7 @@ public class Main {
                 byteStorage.add(b);
             }
         } catch (IOException e) {
-            System.err.println(e);
+            System.err.format("File read error: %s", e.getMessage());
         }
 
         List<String> wordStorage = ByteStream.toWordList(byteStorage);
@@ -48,6 +45,7 @@ public class Main {
 
         Path bookStatistic = Path.of(String.format("src\\Statistic\\%s_statistic.txt", bookTitle));
         try (FileWriter statisticFile = new FileWriter(bookStatistic.toString())) {
+//            Add method create folder
             new File(bookStatistic.toString());
             statisticFile.write("Amount word:\n");
             mostPopularWords.entrySet().stream()
