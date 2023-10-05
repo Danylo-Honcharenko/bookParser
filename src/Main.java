@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the name of the book on which you want to analyze the operation");
         System.out.print("Book title: ");
