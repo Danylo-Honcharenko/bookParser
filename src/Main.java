@@ -47,25 +47,25 @@ public class Main {
         System.out.println("Total words: " + totalWords);
 
         Path bookStatistic = Path.of(String.format("src\\Statistic\\%s_statistic.txt", bookTitle));
-        try (FileWriter writeStatistic = new FileWriter(bookStatistic.toString())) {
+        try (FileWriter statisticFile = new FileWriter(bookStatistic.toString())) {
             new File(bookStatistic.toString());
-            writeStatistic.write("Amount word:\n");
+            statisticFile.write("Amount word:\n");
             mostPopularWords.entrySet().stream()
                     .filter(m -> m.getKey().length() > 3)
                     .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                     .limit(10)
                     .forEach(m -> {
                         try {
-                            writeStatistic.write("Word: " + m.getKey() + " " + " Amount: " + m.getValue() + "\n");
+                            statisticFile.write("Word: " + m.getKey() + " " + " Amount: " + m.getValue() + "\n");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
                     });
-            writeStatistic.write("\nUnique words:\n");
+            statisticFile.write("\nUnique words:\n");
             for (String word: uniqueWords) {
-                writeStatistic.write(word + "\n");
+                statisticFile.write(word + "\n");
             }
-            writeStatistic.write("\nTotal words: " + totalWords);
+            statisticFile.write("\nTotal words: " + totalWords);
         } catch (Exception e) {
             System.err.format("File error: %s", e.getMessage());
         }

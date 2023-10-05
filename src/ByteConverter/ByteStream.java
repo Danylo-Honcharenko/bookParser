@@ -10,7 +10,6 @@ public class ByteStream {
         ByteMapping byteMapping = new ByteMapping();
         // Optimization means removing punctuation marks but not spaces
         List<Byte> optimizedByteStorage = byteMapping.optimizationByte(byteStorage);
-        // Variables
         int currentSizeByteStorage = optimizedByteStorage.size();
         final int bufferSize = 128 * 1024;
         // Buffer initialization
