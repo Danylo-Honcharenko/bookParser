@@ -9,6 +9,7 @@ public class ByteMapping {
     private int iterator = 0;
 
     public List<Byte> optimizationByte(List<Byte> byteStorage) {
+        // creating a new list without punctuation marks
         return byteStorage.stream()
                 .filter(b -> b != 33)
                 .filter(b -> b != 44)
@@ -23,7 +24,7 @@ public class ByteMapping {
             // if the field is 0 then we got all the values
             if (value == 0) {
                 this.setCurrentIterationState(true);
-                // increase the loop variable so that space does not iterate
+                // increase the value of the iterator variable to skip the space
                 iterator++;
                 wordsStorage.add(wordPicker.toString());
                 int wordPickerLength = wordPicker.length();

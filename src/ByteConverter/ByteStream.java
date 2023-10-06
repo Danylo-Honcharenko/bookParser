@@ -38,6 +38,8 @@ public class ByteStream {
                 // convert received bytes into words
                 byteMapping.toLetter(intermediateByteStorage, wordPicker, wordsStorage);
             }
+            // we check whether the position of the cursor in the buffer is equal to the total size of our byte storage
+            // an important condition because the code is based on indentation in the text
             if (intermediateByteStorage.position() == currentSizeByteStorage) {
                 byteMapping.toLetter(intermediateByteStorage, wordPicker, wordsStorage);
             }
