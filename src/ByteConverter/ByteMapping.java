@@ -27,9 +27,8 @@ public class ByteMapping {
                 // increase the value of the iterator variable to skip the space
                 iterator++;
                 wordsStorage.add(wordPicker.toString());
-                int wordPickerLength = wordPicker.length();
                 // clear the collected word
-                wordPicker.delete(0, wordPickerLength);
+                wordPicker.delete(0, wordPicker.length());
                 break;
             }
             wordPicker.append((char) value);
