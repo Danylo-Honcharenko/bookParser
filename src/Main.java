@@ -45,7 +45,6 @@ public class Main {
 
         Path bookStatistic = Path.of(String.format("src\\Statistic\\%s_statistic.txt", bookTitle));
         try (FileWriter statisticFile = new FileWriter(bookStatistic.toString())) {
-//            Add method create folder
             new File(bookStatistic.toString());
             statisticFile.write("Amount word:\n");
             mostPopularWords.entrySet().stream()
