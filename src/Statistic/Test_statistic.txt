@@ -1,0 +1,19 @@
+Amount word:
+Word: danil  Amount: 2
+Word: hello  Amount: 2
+Word: world  Amount: 1
+Word: name  Amount: 1
+Word: good  Amount: 1
+
+Unique words:
+a
+world
+name
+is
+danil
+hello
+my
+good
+boy
+
+Total words: 12
