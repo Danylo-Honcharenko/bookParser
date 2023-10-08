@@ -1,4 +1,4 @@
-import ByteConverter.ByteStream;
+import Converter.Converter;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -16,18 +16,18 @@ public class Main {
             System.err.format("The book with the title \"%s\" does not exist, try again", bookTitle);
             return;
         }
-        List<Byte> byteStorage = new ArrayList<>();
-        try (FileReader readeBook = new FileReader(path.toString())) {
-            byte b;
-            while ((b = (byte) readeBook.read()) != -1) {
-                byteStorage.add(b);
+        List<String> wordStorage = new ArrayList<>();
+        try (BufferedReader readeBook = new BufferedReader(new FileReader(path.toString()))) {
+            String l;
+            while ((l = readeBook.readLine()) != null) {
+                String[] word = l.split("[\\s+!.,\t\n]+");
+                wordStorage.addAll(Arrays.stream(word).map(String::toLowerCase).toList());
             }
         } catch (IOException e) {
             System.err.format("File read error: %s", e.getMessage());
         }
 
-        List<String> wordStorage = ByteStream.toWordList(byteStorage);
-        Map<String, Integer> mostPopularWords = ByteStream.toMap(wordStorage);
+        Map<String, Integer> mostPopularWords = Converter.toMap(wordStorage);
         mostPopularWords.entrySet().stream()
                 .filter(m -> m.getKey().length() > 3)
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
@@ -36,7 +36,7 @@ public class Main {
 
         System.out.println("\nUnique words");
         System.out.println("===============");
-        Set<String> uniqueWords = ByteStream.toSet(wordStorage);
+        Set<String> uniqueWords = Converter.toSet(wordStorage);
         uniqueWords.forEach(System.out::println);
 
         int totalWords = wordStorage.size();
@@ -44,7 +44,7 @@ public class Main {
         System.out.println("Total words: " + totalWords);
 
         Path bookStatistic = Path.of(String.format("src\\Statistic\\%s_statistic.txt", bookTitle));
-        try (FileWriter statisticFile = new FileWriter(bookStatistic.toString())) {
+        try (BufferedWriter statisticFile = new BufferedWriter(new FileWriter(bookStatistic.toString()))) {
             new File(bookStatistic.toString());
             statisticFile.write("Amount word:\n");
             mostPopularWords.entrySet().stream()
