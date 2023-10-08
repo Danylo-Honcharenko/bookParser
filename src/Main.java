@@ -20,8 +20,9 @@ public class Main {
         try (BufferedReader readeBook = new BufferedReader(new FileReader(path.toString()))) {
             String l;
             while ((l = readeBook.readLine()) != null) {
-                String[] word = l.split("[\\s+!.,\t\n]+");
-                wordStorage.addAll(Arrays.stream(word).map(String::toLowerCase).toList());
+                wordStorage.addAll(Arrays.stream(l.split("[\\s+!.,\t\n]+"))
+                        .map(String::toLowerCase)
+                        .toList());
             }
         } catch (IOException e) {
             System.err.format("File read error: %s", e.getMessage());
