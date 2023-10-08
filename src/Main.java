@@ -20,7 +20,7 @@ public class Main {
         try (BufferedReader readeBook = new BufferedReader(new FileReader(path.toString()))) {
             String l;
             while ((l = readeBook.readLine()) != null) {
-                wordStorage.addAll(Arrays.stream(l.split("[\\s+!.,\t\n]+"))
+                wordStorage.addAll(Arrays.stream(l.split("[\\s+!.,\\t]+"))
                         .map(String::toLowerCase)
                         .toList());
             }
