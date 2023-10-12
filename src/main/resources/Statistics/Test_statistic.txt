@@ -1,0 +1,1 @@
+Unique words: 6 Total words: 7 Pupular words: {name=1, danil=1, hello=2}
